@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shamrock symbol -->
+  <g transform="translate(20, 20)">
+    <!-- Three leaves of shamrock -->
+    <circle cx="0" cy="-8" r="8" fill="#2E8B57" />
+    <circle cx="-7" cy="4" r="8" fill="#2E8B57" />
+    <circle cx="7" cy="4" r="8" fill="#2E8B57" />
+    <!-- Stem -->
+    <rect x="-1" y="8" width="2" height="12" fill="#228B22" />
+  </g>
+  
+  <!-- Fleur-de-lis symbol -->
+  <g transform="translate(60, 25)">
+    <!-- Central petal -->
+    <ellipse cx="0" cy="0" rx="4" ry="12" fill="#4169E1" />
+    <!-- Left petal -->
+    <ellipse cx="-8" cy="3" rx="3" ry="8" fill="#4169E1" transform="rotate(-30)" />
+    <!-- Right petal -->
+    <ellipse cx="8" cy="3" rx="3" ry="8" fill="#4169E1" transform="rotate(30)" />
+    <!-- Base -->
+    <rect x="-2" y="8" width="4" height="6" fill="#4169E1" />
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2E8B57">SCOUTING</text>
+  <text x="100" y="50" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4169E1">IRELAND</text>
+</svg>
