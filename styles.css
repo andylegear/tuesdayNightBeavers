@@ -1019,3 +1019,71 @@ a:hover {
         bottom: 15px;
     }
 }
+
+/* Add to styles.css */
+.weather-schedule-panels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.weather-panel {
+    flex: 1 1 320px;
+    background: #f9f7fd;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    padding: 2rem;
+    min-width: 300px;
+}
+.weather-panel.nice-weather {
+    background: linear-gradient(135deg, #e0f7fa 0%, #fffbe5 100%);
+    border-left: 6px solid #4ECDC4;
+}
+.weather-panel.bad-weather {
+    background: linear-gradient(135deg, #e6e6fa 0%, #ffe5e5 100%);
+    border-left: 6px solid #FF6B6B;
+}
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.weather-icon {
+    font-size: 2.5rem;
+}
+.schedule-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+.schedule-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+.schedule-time {
+    font-weight: bold;
+    color: #4ECDC4;
+    min-width: 90px;
+    font-size: 1.1rem;
+}
+.bad-weather .schedule-time {
+    color: #FF6B6B;
+}
+.schedule-desc {
+    flex: 1;
+}
+.indoor-objective h4 {
+    margin-top: 1rem;
+    color: #333;
+    font-size: 1.1rem;
+}
+.scout-law {
+    background: #fffbe5;
+    border-radius: 8px;
+    padding: 0.2em 0.6em;
+    font-weight: bold;
+    color: #4ECDC4;
+}
