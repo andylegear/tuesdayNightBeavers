@@ -49,13 +49,13 @@ tuesdayNightBeavers/
 - **Meeting Day**: Tuesday Nights
 - **Location**: Shannon Banks, Corbally, Limerick (V94K72O)
 - **Age Group**: 6-8 years (Beaver Scouts)
-- **Leaders**: Anne, Joe, and Andy
+- **Leaders**: ***********
 
 ## Contact Information
 
 - **General Email**: ryanml64@gmail.com
-- **General Phone**: 087 689 2237
-- **Andy (Leader)**: andylegear@gmail.com, 086 450 0112
+- **General Phone**: ***********
+- **Andy (Leader)**: andy*****gear@*******.com, ***********
 
 ## Getting Started
 
