@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Claims - 25th Limerick Tuesday Night Beavers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <meta property="og:title" content="25th Limerick Tuesday Night Beavers">
+    <meta property="og:description" content="A simple, static website for the 25th Limerick St. Oliver Plunkett Beaver Scouts group, based in Shannon Banks, Corbally, Limerick.">
+    <meta property="og:image" content="https://andylegear.github.io/tuesdayNightBeavers/images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png">
+    <meta property="og:url" content="https://andylegear.github.io/tuesdayNightBeavers/">
+    
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        .expense-form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            background: #f8f9fa;
+        }
+        
+        .form-section h3 {
+            margin: 0 0 1rem 0;
+            color: #333;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #4ECDC4;
+            padding-bottom: 0.5rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-group.full-width {
+            flex: 100%;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #4ECDC4;
+            outline: none;
+        }
+        
+        .expense-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .expense-table th {
+            background: #4ECDC4;
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .expense-table td {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+        }
+        
+        .expense-table input {
+            width: 100%;
+            border: none;
+            padding: 0.5rem;
+            background: transparent;
+            font-size: 0.9rem;
+        }
+        
+        .expense-table input:focus {
+            background: #f0f8ff;
+            border: 1px solid #4ECDC4;
+            border-radius: 4px;
+        }
+        
+        .add-row-btn {
+            background: #4ECDC4;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .add-row-btn:hover {
+            background: #44A08D;
+        }
+        
+        .remove-row-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .remove-row-btn:hover {
+            background: #ff3742;
+        }
+        
+        .image-upload-section {
+            margin: 1rem 0;
+        }
+        
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 0.5rem 0;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background: #f8f9fa;
+            border: 2px dashed #4ECDC4;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .file-input-wrapper:hover {
+            background: #e8f4f8;
+            border-color: #44A08D;
+        }
+        
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .upload-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .mileage-calc {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #4ECDC4;
+        }
+        
+        .total-section {
+            background: #fffbf0;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #FFD93D;
+            text-align: center;
+        }
+        
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+            margin-top: 2rem;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .generate-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error-message {
+            color: #ff4757;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .success-message {
+            color: #2ed573;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .expense-table {
+                font-size: 0.8rem;
+            }
+            
+            .expense-table th,
+            .expense-table td {
+                padding: 0.5rem 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png" alt="25th Limerick Beavers" class="nav-logo-img beaver-logo">
+                <img src="https://cdn.prod.website-files.com/618cf519424e2d632cd8c920/618cf9468e7b44379cb5a327_logo-white.png" alt="Scouting Ireland" class="nav-logo-img">
+                <h1 class="nav-logo">25th Limerick Tuesday Night Beavers</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="forms.html" class="nav-link">Forms</a>
+                </li>
+                <li class="nav-item">
+                    <a href="schedules.html" class="nav-link">Schedules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="announcements.html" class="nav-link">Announcements</a>
+                </li>
+                <li class="nav-item">
+                    <a href="receipts.html" class="nav-link">Receipts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="expense-claims.html" class="nav-link active">Expense Claims</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Expense Claim Form</h1>
+            <p>Submit expenses for reimbursement from scout activities</p>
+            <div class="hero-illustration">
+                <!-- Simple SVG illustration of expense form -->
+                <svg viewBox="0 0 400 200" class="expense-svg">
+                    <!-- Form background -->
+                    <rect x="80" y="20" width="240" height="160" rx="8" fill="white" stroke="#4ECDC4" stroke-width="3"/>
+                    
+                    <!-- Header -->
+                    <rect x="80" y="20" width="240" height="30" rx="8" fill="#4ECDC4"/>
+                    <text x="200" y="40" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">EXPENSE CLAIM</text>
+                    
+                    <!-- Form lines -->
+                    <line x1="90" y1="70" x2="310" y2="70" stroke="#ddd" stroke-width="1"/>
+                    <line x1="90" y1="85" x2="310" y2="85" stroke="#ddd" stroke-width="1"/>
+                    <line x1="90" y1="100" x2="250" y2="100" stroke="#ddd" stroke-width="1"/>
+                    
+                    <!-- Table grid -->
+                    <rect x="90" y="115" width="220" height="45" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+                    <line x1="140" y1="115" x2="140" y2="160" stroke="#ddd" stroke-width="1"/>
+                    <line x1="230" y1="115" x2="230" y2="160" stroke="#ddd" stroke-width="1"/>
+                    <line x1="280" y1="115" x2="280" y2="160" stroke="#ddd" stroke-width="1"/>
+                    <line x1="90" y1="135" x2="310" y2="135" stroke="#ddd" stroke-width="1"/>
+                    
+                    <!-- Euro symbol -->
+                    <text x="295" y="150" font-family="Arial" font-size="16" text-anchor="middle" fill="#4ECDC4" font-weight="bold">€</text>
+                    
+                    <!-- Decorative receipt icons -->
+                    <rect x="40" y="60" width="20" height="25" rx="2" fill="#FFD93D" stroke="#333" stroke-width="1"/>
+                    <line x1="42" y1="67" x2="58" y2="67" stroke="#333" stroke-width="1"/>
+                    <line x1="42" y1="72" x2="55" y2="72" stroke="#333" stroke-width="1"/>
+                    <line x1="42" y1="77" x2="58" y2="77" stroke="#333" stroke-width="1"/>
+                    
+                    <rect x="340" y="100" width="20" height="25" rx="2" fill="#FF6B6B" stroke="#333" stroke-width="1"/>
+                    <line x1="342" y1="107" x2="358" y2="107" stroke="#333" stroke-width="1"/>
+                    <line x1="342" y1="112" x2="355" y2="112" stroke="#333" stroke-width="1"/>
+                    <line x1="342" y1="117" x2="358" y2="117" stroke="#333" stroke-width="1"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="expense-form-container">
+                <h2>💰 Expense Claim Form</h2>
+                <p>Complete this form to claim reimbursement for scout-related expenses. Please attach receipts and provide accurate details.</p>
+                
+                <form id="expenseForm">
+                    <!-- Personal Details Section -->
+                    <div class="form-section">
+                        <h3>👤 Personal Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="claimantName">Claimant's Name:</label>
+                                <input type="text" id="claimantName" name="claimantName" required placeholder="Enter full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="section">Section:</label>
+                                <input type="text" id="section" name="section" value="Tuesday Night Beavers" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event">Event:</label>
+                                <input type="text" id="event" name="event" required placeholder="e.g., SUAS Climbing, Weekly Meeting">
+                            </div>
+                            <div class="form-group">
+                                <label for="claimDate">Claim Date:</label>
+                                <input type="date" id="claimDate" name="claimDate" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expenses Table Section -->
+                    <div class="form-section">
+                        <h3>🧾 Expense Details</h3>
+                        <table class="expense-table" id="expenseTable">
+                            <thead>
+                                <tr>
+                                    <th style="width: 15%;">Expense Date</th>
+                                    <th style="width: 45%;">Expense Description</th>
+                                    <th style="width: 15%;">Amount (€)</th>
+                                    <th style="width: 15%;">Receipt</th>
+                                    <th style="width: 10%;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expenseTableBody">
+                                <tr>
+                                    <td><input type="date" name="expenseDate[]" required></td>
+                                    <td><input type="text" name="expenseDescription[]" required placeholder="Description of expense"></td>
+                                    <td><input type="number" name="expenseAmount[]" step="0.01" min="0" required placeholder="0.00" onchange="calculateTotal()"></td>
+                                    <td>
+                                        <select name="hasReceipt[]">
+                                            <option value="Y">Yes</option>
+                                            <option value="N">No</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="remove-row-btn" onclick="removeExpenseRow(this)" style="display: none;">Remove</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="add-row-btn" onclick="addExpenseRow()">+ Add Expense Row</button>
+                    </div>
+
+                    <!-- Mileage Section -->
+                    <div class="form-section">
+                        <h3>🚗 Mileage Calculation</h3>
+                        <div class="mileage-calc">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="totalKm">Total KM:</label>
+                                    <input type="number" id="totalKm" name="totalKm" step="0.1" min="0" placeholder="0.0" onchange="calculateMileage()">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ratePerKm">Rate per KM (€):</label>
+                                    <input type="number" id="ratePerKm" name="ratePerKm" step="0.01" value="0.42" onchange="calculateMileage()">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mileageAmount">Mileage Amount (€):</label>
+                                    <input type="number" id="mileageAmount" name="mileageAmount" step="0.01" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Section -->
+                    <div class="form-section">
+                        <h3>💰 Total Claimed</h3>
+                        <div class="total-section">
+                            <div class="total-amount">Total: €<span id="totalAmount">0.00</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Image Upload Section -->
+                    <div class="form-section">
+                        <h3>📎 Receipt Images</h3>
+                        <div class="image-upload-section">
+                            <label for="receiptImages">Upload Receipt Images:</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="receiptImages" name="receiptImages" multiple accept="image/*" onchange="previewImages(this, 'receiptPreviews')">
+                                <div class="upload-text">
+                                    📄 Click to upload receipt images<br>
+                                    <small>Multiple files supported (JPG, PNG)</small>
+                                </div>
+                            </div>
+                            <div id="receiptPreviews"></div>
+                        </div>
+                    </div>
+
+                    <!-- Signature Upload Section -->
+                    <div class="form-section">
+                        <h3>✍️ Signature</h3>
+                        <div class="image-upload-section">
+                            <label for="signatureImage">Upload Signature Image:</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="signatureImage" name="signatureImage" accept="image/*" onchange="previewImages(this, 'signaturePreviews')">
+                                <div class="upload-text">
+                                    ✍️ Click to upload signature image<br>
+                                    <small>One file only (JPG, PNG)</small>
+                                </div>
+                            </div>
+                            <div id="signaturePreviews"></div>
+                        </div>
+                    </div>
+
+                    <!-- Password Section -->
+                    <div class="form-section">
+                        <h3>🔐 Authentication</h3>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required placeholder="Enter password">
+                            <div id="passwordError" class="error-message" style="display: none;">
+                                Incorrect password. Please try again.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="generate-btn" id="generateBtn">
+                        📋 Generate Expense Claim PDF
+                    </button>
+                </form>
+                
+                <div id="successMessage" class="success-message" style="display: none;">
+                    Expense claim generated successfully! Check your downloads folder.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 25th Limerick St. Oliver Plunkett Beaver Scouts</p>
+                    <p>Part of Scouting Ireland</p>
+                </div>
+                <div class="footer-logo">
+                    <img src="images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png" alt="25th Limerick Beavers" class="footer-logo-img beaver-logo">
+                    <img src="https://cdn.prod.website-files.com/618cf519424e2d632cd8c920/618cf9468e7b44379cb5a327_logo-white.png" alt="Scouting Ireland" class="footer-logo-img">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Get jsPDF from the global scope
+        const { jsPDF } = window.jspdf;
+        
+        // Set today's date as default
+        document.getElementById('claimDate').value = new Date().toISOString().split('T')[0];
+        
+        let receiptImageData = [];
+        let signatureImageData = null;
+        
+        // Add expense row
+        function addExpenseRow() {
+            const tbody = document.getElementById('expenseTableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="date" name="expenseDate[]" required></td>
+                <td><input type="text" name="expenseDescription[]" required placeholder="Description of expense"></td>
+                <td><input type="number" name="expenseAmount[]" step="0.01" min="0" required placeholder="0.00" onchange="calculateTotal()"></td>
+                <td>
+                    <select name="hasReceipt[]">
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+                </td>
+                <td><button type="button" class="remove-row-btn" onclick="removeExpenseRow(this)">Remove</button></td>
+            `;
+            tbody.appendChild(newRow);
+            updateRemoveButtons();
+        }
+        
+        // Remove expense row
+        function removeExpenseRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+            calculateTotal();
+            updateRemoveButtons();
+        }
+        
+        // Update remove button visibility
+        function updateRemoveButtons() {
+            const rows = document.querySelectorAll('#expenseTableBody tr');
+            rows.forEach((row, index) => {
+                const removeBtn = row.querySelector('.remove-row-btn');
+                if (rows.length === 1) {
+                    removeBtn.style.display = 'none';
+                } else {
+                    removeBtn.style.display = 'inline-block';
+                }
+            });
+        }
+        
+        // Calculate mileage
+        function calculateMileage() {
+            const km = parseFloat(document.getElementById('totalKm').value) || 0;
+            const rate = parseFloat(document.getElementById('ratePerKm').value) || 0;
+            const mileageAmount = km * rate;
+            document.getElementById('mileageAmount').value = mileageAmount.toFixed(2);
+            calculateTotal();
+        }
+        
+        // Calculate total
+        function calculateTotal() {
+            let total = 0;
+            
+            // Add expense amounts
+            const expenseAmounts = document.querySelectorAll('input[name="expenseAmount[]"]');
+            expenseAmounts.forEach(input => {
+                const amount = parseFloat(input.value) || 0;
+                total += amount;
+            });
+            
+            // Add mileage amount
+            const mileageAmount = parseFloat(document.getElementById('mileageAmount').value) || 0;
+            total += mileageAmount;
+            
+            document.getElementById('totalAmount').textContent = total.toFixed(2);
+        }
+        
+        // Preview images
+        function previewImages(input, previewContainerId) {
+            const previewContainer = document.getElementById(previewContainerId);
+            previewContainer.innerHTML = '';
+            
+            if (input.files) {
+                Array.from(input.files).forEach((file, index) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'image-preview';
+                        img.style.display = 'block';
+                        img.style.margin = '0.5rem';
+                        img.style.maxWidth = '200px';
+                        img.style.maxHeight = '200px';
+                        img.style.border = '1px solid #ddd';
+                        img.style.borderRadius = '8px';
+                        previewContainer.appendChild(img);
+                        
+                        // Store image data
+                        if (input.id === 'receiptImages') {
+                            if (!receiptImageData[index]) receiptImageData[index] = {};
+                            receiptImageData[index].data = e.target.result;
+                            receiptImageData[index].name = file.name;
+                        } else if (input.id === 'signatureImage') {
+                            signatureImageData = {
+                                data: e.target.result,
+                                name: file.name
+                            };
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        }
+        
+        // Handle form submission
+        document.getElementById('expenseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate password
+            const password = document.getElementById('password').value;
+            const passwordError = document.getElementById('passwordError');
+            
+            if (password !== 'BEAVERS2025') {
+                passwordError.style.display = 'block';
+                document.getElementById('password').focus();
+                return;
+            } else {
+                passwordError.style.display = 'none';
+            }
+            
+            // Generate expense claim PDF
+            generateExpenseClaimPDF();
+        });
+        
+        async function generateExpenseClaimPDF() {
+            try {
+                const doc = new jsPDF();
+                
+                // Set up colors
+                const primaryColor = [78, 205, 196]; // #4ECDC4
+                const darkColor = [51, 51, 51]; // #333
+                
+                // Load and convert beaver logo to base64
+                const beaverLogoBase64 = await imageToBase64('images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png');
+                
+                // Header background
+                doc.setFillColor(...primaryColor);
+                doc.rect(0, 0, 210, 40, 'F');
+                
+                // Add beaver logo to header
+                if (beaverLogoBase64) {
+                    doc.addImage(beaverLogoBase64, 'PNG', 15, 8, 20, 20);
+                }
+                
+                // Title
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(18);
+                doc.setFont('helvetica', 'bold');
+                doc.text('25TH LIMERICK', 105, 18, { align: 'center' });
+                doc.text('EXPENSE CLAIM FORM', 105, 28, { align: 'center' });
+                
+                // Get form data
+                const claimantName = document.getElementById('claimantName').value;
+                const section = document.getElementById('section').value;
+                const event = document.getElementById('event').value;
+                const claimDate = document.getElementById('claimDate').value;
+                
+                // Personal details section
+                doc.setTextColor(...darkColor);
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+                
+                let yPos = 55;
+                doc.text(`Claimant's Name: ${claimantName}`, 20, yPos);
+                doc.text(`Section: ${section}`, 120, yPos);
+                
+                yPos += 10;
+                doc.text(`Event: ${event}`, 20, yPos);
+                doc.text(`Date: ${new Date(claimDate).toLocaleDateString('en-IE')}`, 120, yPos);
+                
+                // Expense table
+                yPos += 20;
+                doc.setFont('helvetica', 'bold');
+                doc.text('EXPENSE DETAILS:', 20, yPos);
+                
+                yPos += 10;
+                
+                // Table headers
+                doc.setFillColor(240, 240, 240);
+                doc.rect(20, yPos - 5, 170, 8, 'F');
+                doc.setFontSize(10);
+                doc.text('Expense Date', 22, yPos);
+                doc.text('Expense Description', 60, yPos);
+                doc.text('Amount (€)', 140, yPos);
+                doc.text('Receipt', 165, yPos);
+                
+                // Table data
+                const expenseDates = document.querySelectorAll('input[name="expenseDate[]"]');
+                const expenseDescriptions = document.querySelectorAll('input[name="expenseDescription[]"]');
+                const expenseAmounts = document.querySelectorAll('input[name="expenseAmount[]"]');
+                const hasReceipts = document.querySelectorAll('select[name="hasReceipt[]"]');
+                
+                let expenseTotal = 0;
+                yPos += 8;
+                
+                for (let i = 0; i < expenseDates.length; i++) {
+                    if (expenseDates[i].value && expenseDescriptions[i].value && expenseAmounts[i].value) {
+                        const amount = parseFloat(expenseAmounts[i].value);
+                        expenseTotal += amount;
+                        
+                        doc.setFont('helvetica', 'normal');
+                        doc.text(new Date(expenseDates[i].value).toLocaleDateString('en-IE'), 22, yPos);
+                        
+                        // Wrap long descriptions
+                        const description = expenseDescriptions[i].value;
+                        if (description.length > 25) {
+                            doc.text(description.substring(0, 25) + '...', 60, yPos);
+                        } else {
+                            doc.text(description, 60, yPos);
+                        }
+                        
+                        doc.text(`€${amount.toFixed(2)}`, 140, yPos);
+                        doc.text(hasReceipts[i].value, 165, yPos);
+                        
+                        yPos += 8;
+                    }
+                }
+                
+                // Mileage section
+                const totalKm = parseFloat(document.getElementById('totalKm').value) || 0;
+                const ratePerKm = parseFloat(document.getElementById('ratePerKm').value) || 0;
+                const mileageAmount = parseFloat(document.getElementById('mileageAmount').value) || 0;
+                
+                if (totalKm > 0) {
+                    yPos += 10;
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('MILEAGE:', 20, yPos);
+                    yPos += 8;
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(`Km @ €${ratePerKm}: ${totalKm} = €${mileageAmount.toFixed(2)}`, 22, yPos);
+                }
+                
+                // Total
+                const totalAmount = expenseTotal + mileageAmount;
+                yPos += 15;
+                doc.setFillColor(255, 253, 240);
+                doc.rect(20, yPos - 8, 170, 12, 'F');
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.text(`TOTAL CLAIMED: €${totalAmount.toFixed(2)}`, 105, yPos, { align: 'center' });
+                
+                // Signature section
+                yPos += 25;
+                doc.setFontSize(12);
+                doc.text('Signature of Claimant:', 20, yPos);
+                
+                // Add signature if provided
+                if (signatureImageData) {
+                    try {
+                        doc.addImage(signatureImageData.data, 'JPEG', 60, yPos - 15, 40, 20);
+                    } catch (error) {
+                        console.warn('Could not add signature image:', error);
+                    }
+                }
+                
+                yPos += 20;
+                doc.text('Date:', 20, yPos);
+                doc.text(new Date().toLocaleDateString('en-IE'), 40, yPos);
+                
+                // Approval section
+                yPos += 20;
+                doc.text('Approved By (PRINT):', 20, yPos);
+                doc.line(70, yPos, 120, yPos);
+                
+                yPos += 15;
+                doc.text('Approved By (SIGN):', 20, yPos);
+                doc.line(70, yPos, 120, yPos);
+                
+                yPos += 15;
+                doc.text('Date:', 20, yPos);
+                doc.line(35, yPos, 85, yPos);
+                
+                // Reimbursement section
+                yPos += 20;
+                doc.setFont('helvetica', 'bold');
+                doc.text('REIMBURSEMENT:', 20, yPos);
+                
+                yPos += 10;
+                doc.setFont('helvetica', 'normal');
+                doc.text('Cheque No.', 20, yPos);
+                doc.text('Date', 80, yPos);
+                doc.text('Amount', 140, yPos);
+                
+                yPos += 8;
+                doc.rect(20, yPos - 5, 50, 10);
+                doc.rect(80, yPos - 5, 50, 10);
+                doc.rect(140, yPos - 5, 50, 10);
+                
+                // Add receipt images if provided (on new page if needed)
+                if (receiptImageData.length > 0) {
+                    doc.addPage();
+                    doc.setFontSize(16);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('RECEIPT IMAGES', 105, 20, { align: 'center' });
+                    
+                    let imageY = 40;
+                    const maxImagesPerRow = 2;
+                    const imageWidth = 80;
+                    const imageHeight = 60;
+                    
+                    receiptImageData.forEach((imageData, index) => {
+                        if (imageData && imageData.data) {
+                            try {
+                                const xPos = 20 + (index % maxImagesPerRow) * (imageWidth + 10);
+                                const yPos = imageY + Math.floor(index / maxImagesPerRow) * (imageHeight + 20);
+                                
+                                if (yPos + imageHeight > 280) {
+                                    doc.addPage();
+                                    imageY = 40;
+                                    const newYPos = imageY + Math.floor((index % 4) / maxImagesPerRow) * (imageHeight + 20);
+                                    doc.addImage(imageData.data, 'JPEG', xPos, newYPos, imageWidth, imageHeight);
+                                } else {
+                                    doc.addImage(imageData.data, 'JPEG', xPos, yPos, imageWidth, imageHeight);
+                                }
+                            } catch (error) {
+                                console.warn(`Could not add receipt image ${index}:`, error);
+                            }
+                        }
+                    });
+                }
+                
+                // Generate filename
+                const filename = `ExpenseClaim_${claimantName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
+                
+                // Save the PDF
+                doc.save(filename);
+                
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+                
+            } catch (error) {
+                console.error('Error generating expense claim:', error);
+                alert('Error generating expense claim. Please try again.');
+            }
+        }
+        
+        // Helper function to convert image to base64
+        function imageToBase64(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = this.naturalWidth;
+                    canvas.height = this.naturalHeight;
+                    ctx.drawImage(this, 0, 0);
+                    const dataURL = canvas.toDataURL('image/png');
+                    resolve(dataURL);
+                };
+                img.onerror = function() {
+                    console.warn(`Failed to load image: ${src}`);
+                    resolve(null);
+                };
+                img.src = src;
+            });
+        }
+        
+        // Initial calculation
+        calculateTotal();
+    </script>
+</body>
+</html>
