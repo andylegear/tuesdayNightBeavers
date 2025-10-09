@@ -427,6 +427,33 @@
                         </div>
                     </div>
 
+                    <!-- Funding Breakdown Section -->
+                    <div class="form-section">
+                        <h3>💳 Funding Breakdown</h3>
+                        <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+                            Please specify how the total expense was funded. The sum of parent funding and scout funding should equal the total claimed amount.
+                        </p>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="parentFunding">Parent Funded Amount (€):</label>
+                                <input type="number" id="parentFunding" name="parentFunding" step="0.01" min="0" placeholder="0.00" onchange="calculateFundingBreakdown()">
+                                <small style="color: #666;">Amount contributed by parents</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="scoutFunding">Scout Funded Amount (€):</label>
+                                <input type="number" id="scoutFunding" name="scoutFunding" step="0.01" min="0" placeholder="0.00" onchange="calculateFundingBreakdown()">
+                                <small style="color: #666;">Amount from scout group funds</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <div id="fundingValidation" style="padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem; display: none;">
+                                    <span id="fundingMessage"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Total Section -->
                     <div class="form-section">
                         <h3>💰 Total Claimed</h3>
@@ -584,6 +611,50 @@
             total += mileageAmount;
             
             document.getElementById('totalAmount').textContent = total.toFixed(2);
+            
+            // Recalculate funding breakdown validation
+            calculateFundingBreakdown();
+        }
+        
+        // Calculate and validate funding breakdown
+        function calculateFundingBreakdown() {
+            const totalAmount = parseFloat(document.getElementById('totalAmount').textContent) || 0;
+            const parentFunding = parseFloat(document.getElementById('parentFunding').value) || 0;
+            const scoutFunding = parseFloat(document.getElementById('scoutFunding').value) || 0;
+            const fundingTotal = parentFunding + scoutFunding;
+            
+            const validationDiv = document.getElementById('fundingValidation');
+            const messageSpan = document.getElementById('fundingMessage');
+            
+            if (parentFunding === 0 && scoutFunding === 0) {
+                // No funding breakdown entered yet
+                validationDiv.style.display = 'none';
+                return;
+            }
+            
+            validationDiv.style.display = 'block';
+            
+            if (Math.abs(fundingTotal - totalAmount) < 0.01) {
+                // Funding breakdown matches total (within 1 cent tolerance)
+                validationDiv.style.background = '#d4edda';
+                validationDiv.style.border = '1px solid #c3e6cb';
+                validationDiv.style.color = '#155724';
+                messageSpan.innerHTML = `✅ Funding breakdown is correct: €${parentFunding.toFixed(2)} (Parents) + €${scoutFunding.toFixed(2)} (Scouts) = €${fundingTotal.toFixed(2)}`;
+            } else if (fundingTotal > totalAmount) {
+                // Funding breakdown exceeds total
+                validationDiv.style.background = '#f8d7da';
+                validationDiv.style.border = '1px solid #f5c6cb';
+                validationDiv.style.color = '#721c24';
+                const difference = fundingTotal - totalAmount;
+                messageSpan.innerHTML = `⚠️ Funding breakdown exceeds total by €${difference.toFixed(2)}. Please adjust the amounts.`;
+            } else {
+                // Funding breakdown is less than total
+                validationDiv.style.background = '#fff3cd';
+                validationDiv.style.border = '1px solid #ffeaa7';
+                validationDiv.style.color = '#856404';
+                const difference = totalAmount - fundingTotal;
+                messageSpan.innerHTML = `⚠️ Funding breakdown is €${difference.toFixed(2)} short of the total. Please add the remaining amount.`;
+            }
         }
         
         // Preview images
@@ -637,6 +708,18 @@
                 return;
             } else {
                 passwordError.style.display = 'none';
+            }
+            
+            // Validate funding breakdown
+            const totalAmount = parseFloat(document.getElementById('totalAmount').textContent) || 0;
+            const parentFunding = parseFloat(document.getElementById('parentFunding').value) || 0;
+            const scoutFunding = parseFloat(document.getElementById('scoutFunding').value) || 0;
+            const fundingTotal = parentFunding + scoutFunding;
+            
+            if (totalAmount > 0 && Math.abs(fundingTotal - totalAmount) >= 0.01) {
+                alert('Please ensure the funding breakdown (Parent + Scout funding) equals the total claimed amount before submitting.');
+                document.getElementById('parentFunding').focus();
+                return;
             }
             
             // Generate expense claim PDF
@@ -759,6 +842,52 @@
                 doc.setFont('helvetica', 'bold');
                 doc.setFontSize(14);
                 doc.text(`TOTAL CLAIMED: €${totalAmount.toFixed(2)}`, 105, yPos, { align: 'center' });
+                
+                // Funding breakdown section
+                const parentFunding = parseFloat(document.getElementById('parentFunding').value) || 0;
+                const scoutFunding = parseFloat(document.getElementById('scoutFunding').value) || 0;
+                
+                if (parentFunding > 0 || scoutFunding > 0) {
+                    yPos += 20;
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(12);
+                    doc.text('FUNDING BREAKDOWN:', 20, yPos);
+                    
+                    yPos += 10;
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(10);
+                    
+                    // Funding breakdown table
+                    doc.setFillColor(240, 240, 240);
+                    doc.rect(20, yPos - 5, 170, 8, 'F');
+                    doc.text('Funding Source', 22, yPos);
+                    doc.text('Amount (€)', 140, yPos);
+                    doc.text('Percentage', 165, yPos);
+                    
+                    yPos += 8;
+                    
+                    if (parentFunding > 0) {
+                        const parentPercentage = totalAmount > 0 ? (parentFunding / totalAmount * 100) : 0;
+                        doc.text('Parent Funded', 22, yPos);
+                        doc.text(`€${parentFunding.toFixed(2)}`, 140, yPos);
+                        doc.text(`${parentPercentage.toFixed(1)}%`, 165, yPos);
+                        yPos += 8;
+                    }
+                    
+                    if (scoutFunding > 0) {
+                        const scoutPercentage = totalAmount > 0 ? (scoutFunding / totalAmount * 100) : 0;
+                        doc.text('Scout Group Funded', 22, yPos);
+                        doc.text(`€${scoutFunding.toFixed(2)}`, 140, yPos);
+                        doc.text(`${scoutPercentage.toFixed(1)}%`, 165, yPos);
+                        yPos += 8;
+                    }
+                    
+                    // Total funding verification
+                    const fundingTotal = parentFunding + scoutFunding;
+                    yPos += 3;
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(`Total Funding: €${fundingTotal.toFixed(2)}`, 22, yPos);
+                }
                 
                 // Signature section
                 yPos += 25;
