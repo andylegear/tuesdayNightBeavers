@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaghetti & Marshmallow Towers - 25th Limerick Tuesday Night Beavers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <meta property="og:title" content="25th Limerick Tuesday Night Beavers">
+    <meta property="og:description" content="A simple, static website for the 25th Limerick St. Oliver Plunkett Beaver Scouts group, based in Shannon Banks, Corbally, Limerick.">
+    <meta property="og:image" content="https://andylegear.github.io/tuesdayNightBeavers/images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png">
+    <meta property="og:url" content="https://andylegear.github.io/tuesdayNightBeavers/">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png" alt="25th Limerick Beavers" class="nav-logo-img beaver-logo">
+                <img src="https://cdn.prod.website-files.com/618cf519424e2d632cd8c920/618cf9468e7b44379cb5a327_logo-white.png" alt="Scouting Ireland" class="nav-logo-img">
+                <h1 class="nav-logo">25th Limerick Tuesday Night Beavers</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="forms.html" class="nav-link">Forms</a>
+                </li>
+                <li class="nav-item">
+                    <a href="schedules.html" class="nav-link">Schedules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="announcements.html" class="nav-link">Announcements</a>
+                </li>
+                <li class="nav-item">
+                    <a href="knots.html" class="nav-link">Knots</a>
+                </li>
+                <li class="nav-item">
+                    <a href="receipts.html" class="nav-link">Receipts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="expense-claims.html" class="nav-link">Expense Claims</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Spaghetti & Marshmallow Towers</h1>
+            <p>A fun STEM activity to learn about engineering and teamwork!</p>
+            <div class="hero-illustration">
+                <!-- Simple SVG illustration of tower/bridge -->
+                <svg viewBox="0 0 400 200" class="towers-svg">
+                    <!-- Tower structure -->
+                    <line x1="80" y1="160" x2="100" y2="80" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="140" y1="160" x2="120" y2="80" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="100" y1="80" x2="120" y2="80" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="80" y1="160" x2="140" y2="160" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="90" y1="120" x2="130" y2="120" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="110" y1="80" x2="110" y2="50" stroke="#CD853F" stroke-width="3"/>
+                    
+                    <!-- Marshmallow joints -->
+                    <circle cx="80" cy="160" r="8" fill="#FFB6C1"/>
+                    <circle cx="140" cy="160" r="8" fill="#FFB6C1"/>
+                    <circle cx="100" cy="80" r="8" fill="#FFB6C1"/>
+                    <circle cx="120" cy="80" r="8" fill="#FFB6C1"/>
+                    <circle cx="90" cy="120" r="8" fill="#FFB6C1"/>
+                    <circle cx="130" cy="120" r="8" fill="#FFB6C1"/>
+                    <circle cx="110" cy="50" r="8" fill="#FFB6C1"/>
+                    
+                    <!-- Bridge structure -->
+                    <line x1="220" y1="160" x2="240" y2="100" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="280" y1="160" x2="260" y2="100" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="240" y1="100" x2="260" y2="100" stroke="#CD853F" stroke-width="3"/>
+                    
+                    <line x1="300" y1="160" x2="320" y2="100" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="360" y1="160" x2="340" y2="100" stroke="#CD853F" stroke-width="3"/>
+                    <line x1="320" y1="100" x2="340" y2="100" stroke="#CD853F" stroke-width="3"/>
+                    
+                    <!-- Bridge span -->
+                    <line x1="260" y1="100" x2="320" y2="100" stroke="#CD853F" stroke-width="4"/>
+                    
+                    <!-- Bridge marshmallows -->
+                    <circle cx="220" cy="160" r="8" fill="#FFB6C1"/>
+                    <circle cx="280" cy="160" r="8" fill="#FFB6C1"/>
+                    <circle cx="240" cy="100" r="8" fill="#FFB6C1"/>
+                    <circle cx="260" cy="100" r="8" fill="#FFB6C1"/>
+                    <circle cx="300" cy="160" r="8" fill="#FFB6C1"/>
+                    <circle cx="360" cy="160" r="8" fill="#FFB6C1"/>
+                    <circle cx="320" cy="100" r="8" fill="#FFB6C1"/>
+                    <circle cx="340" cy="100" r="8" fill="#FFB6C1"/>
+                    
+                    <!-- Stars decoration -->
+                    <polygon points="180,50 183,60 193,60 185,67 188,77 180,71 172,77 175,67 167,60 177,60" fill="#FFD93D"/>
+                    <polygon points="200,140 202,147 210,147 204,152 206,160 200,155 194,160 196,152 190,147 198,147" fill="#4ECDC4"/>
+                </svg>
+            </div>
+            
+            <!-- Scroll Down Arrow -->
+            <div class="scroll-down-arrow">
+                <a href="#stem-intro" class="scroll-arrow-link">
+                    <div class="scroll-text">Learn How to Build</div>
+                    <div class="arrow-container">
+                        <div class="arrow-down"></div>
+                        <div class="arrow-down"></div>
+                        <div class="arrow-down"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="stem-intro-section" id="stem-intro">
+            <div class="container">
+                <h2>🏗️ Spaghetti and Marshmallow STEM Activity</h2>
+                <p style="font-size: 1.2rem; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                    Building structures with spaghetti and marshmallows is a fantastic way for Beaver Scouts to learn about engineering and teamwork. 
+                    It's hands-on, creative, and teaches real science concepts!
+                </p>
+                
+                <!-- What You Need Section -->
+                <div class="materials-section">
+                    <h3>🎒 What You'll Need</h3>
+                    <div class="materials-grid">
+                        <div class="material-card">
+                            <span class="material-icon">🍝</span>
+                            <h4>Dry Spaghetti</h4>
+                            <p>Uncooked spaghetti strands - the longer the better!</p>
+                        </div>
+                        <div class="material-card">
+                            <span class="material-icon">🍬</span>
+                            <h4>Mini Marshmallows</h4>
+                            <p>These act as the "joints" to connect your spaghetti</p>
+                        </div>
+                        <div class="material-card">
+                            <span class="material-icon">🧠</span>
+                            <h4>Creativity!</h4>
+                            <p>Your imagination is your most important tool</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructions Section -->
+                <div class="instructions-section">
+                    <h2>📋 Step-by-Step Instructions</h2>
+                    
+                    <div class="instruction-steps">
+                        <!-- Step 1 -->
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>🎯 Preparation</h3>
+                                <p>Give each small group a handful of dry spaghetti and a bowl of mini marshmallows.</p>
+                                <div class="step-tip">
+                                    <strong>💡 Tip:</strong> Work in groups of 2-3 Beavers for best teamwork!
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>📐 The Base</h3>
+                                <p>Start by creating a flat geometric shape (like a square or triangle) on the table.</p>
+                                <p>Use marshmallows as the "joints" to connect the spaghetti strands.</p>
+                                <div class="step-visual">
+                                    <svg viewBox="0 0 200 100" class="step-svg">
+                                        <!-- Triangle base -->
+                                        <line x1="50" y1="80" x2="150" y2="80" stroke="#CD853F" stroke-width="3"/>
+                                        <line x1="50" y1="80" x2="100" y2="30" stroke="#CD853F" stroke-width="3"/>
+                                        <line x1="150" y1="80" x2="100" y2="30" stroke="#CD853F" stroke-width="3"/>
+                                        <circle cx="50" cy="80" r="8" fill="#FFB6C1"/>
+                                        <circle cx="150" cy="80" r="8" fill="#FFB6C1"/>
+                                        <circle cx="100" cy="30" r="8" fill="#FFB6C1"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="step-card highlight-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>🗼 Building Up (Towers)</h3>
+                                <ul>
+                                    <li>Push vertical spaghetti strands into the corner marshmallows</li>
+                                    <li>Connect the tops with more marshmallows and horizontal strands</li>
+                                    <li>Create a cube or pyramid shape</li>
+                                </ul>
+                                <div class="step-tip important">
+                                    <strong>⭐ SUPER TIP:</strong> Use triangles in your design - they are much stronger and more stable than squares!
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>🌉 Spanning Gaps (Bridges)</h3>
+                                <ul>
+                                    <li>Build two sturdy towers first</li>
+                                    <li>Connect them using long horizontal strands</li>
+                                    <li>Reinforce the "roadway" by bundling 2-3 strands of spaghetti together</li>
+                                </ul>
+                                <div class="step-tip">
+                                    <strong>💡 Tip:</strong> Use tape or more marshmallows to bundle strands together - this prevents snapping!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Engineering Concepts -->
+                <div class="concepts-section">
+                    <h2>🔬 What We're Learning</h2>
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <span class="concept-icon">📐</span>
+                            <h4>Triangles are Strong!</h4>
+                            <p>A triangle keeps its shape under pressure, while a square can collapse into a diamond. That's why bridges use triangular shapes!</p>
+                        </div>
+                        <div class="concept-card">
+                            <span class="concept-icon">⚖️</span>
+                            <h4>Balance & Stability</h4>
+                            <p>A wide base helps keep structures from falling over. The wider the base, the more stable the tower!</p>
+                        </div>
+                        <div class="concept-card">
+                            <span class="concept-icon">💪</span>
+                            <h4>Tension & Compression</h4>
+                            <p>Some parts of a structure are being pushed (compression) and others are being pulled (tension). Engineers think about both!</p>
+                        </div>
+                        <div class="concept-card">
+                            <span class="concept-icon">🤝</span>
+                            <h4>Teamwork</h4>
+                            <p>The best structures are built by teams working together, just like real engineers!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Section -->
+                <div class="video-section">
+                    <h2>📺 Watch How It's Done!</h2>
+                    <p style="text-align: center; margin-bottom: 2rem;">This video shows the process of building a tall structure and provides great visual tips:</p>
+                    <div class="main-video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/Fw7js_dVxfo" 
+                            title="The Marshmallow & Spaghetti Challenge!"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Challenge Section -->
+                <div class="challenge-section">
+                    <h2>🏆 Beaver Building Challenges</h2>
+                    <p style="text-align: center; margin-bottom: 2rem;">Try these fun challenges with your lodge!</p>
+                    <div class="challenges-grid">
+                        <div class="challenge-card">
+                            <span class="challenge-icon">🗼</span>
+                            <h4>Tallest Tower</h4>
+                            <p>Who can build the tallest tower that stands on its own for 10 seconds?</p>
+                        </div>
+                        <div class="challenge-card">
+                            <span class="challenge-icon">🌉</span>
+                            <h4>Strongest Bridge</h4>
+                            <p>Which bridge can hold the most weight? Test with small toys or coins!</p>
+                        </div>
+                        <div class="challenge-card">
+                            <span class="challenge-icon">🎨</span>
+                            <h4>Most Creative</h4>
+                            <p>Can you build something unusual? A house? A rocket? A dinosaur?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 25th Limerick St. Oliver Plunkett Beaver Scouts</p>
+                    <p>Part of Scouting Ireland</p>
+                </div>
+                <div class="footer-logo">
+                    <img src="images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png" alt="25th Limerick Beavers" class="footer-logo-img beaver-logo">
+                    <img src="https://cdn.prod.website-files.com/618cf519424e2d632cd8c920/618cf9468e7b44379cb5a327_logo-white.png" alt="Scouting Ireland" class="footer-logo-img">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        /* Spaghetti Towers Page Specific Styles */
+        .materials-section {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+        
+        .materials-section h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #856404;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .material-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .material-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .material-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        
+        .material-card p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .instructions-section {
+            margin-bottom: 3rem;
+        }
+        
+        .instructions-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .instruction-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .step-card.highlight-step {
+            border: 3px solid #FFD93D;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            min-width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .step-card:nth-child(2) .step-number {
+            background: linear-gradient(135deg, #FFD93D 0%, #F39C12 100%);
+        }
+        
+        .step-card:nth-child(3) .step-number {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A5A 100%);
+        }
+        
+        .step-card:nth-child(4) .step-number {
+            background: linear-gradient(135deg, #87CEEB 0%, #5DADE2 100%);
+        }
+        
+        .step-content {
+            padding: 1.5rem 2rem;
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            margin: 0 0 1rem 0;
+            color: #333;
+        }
+        
+        .step-content p, .step-content ul {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .step-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .step-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-tip {
+            background: #E8F5E9;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .step-tip.important {
+            background: #FFF3E0;
+            border-left-color: #FF9800;
+        }
+        
+        .step-visual {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .step-svg {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        .concepts-section {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+        
+        .concepts-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1565C0;
+        }
+        
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .concept-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .concept-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .concept-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #1565C0;
+        }
+        
+        .concept-card p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .video-section {
+            margin-bottom: 3rem;
+        }
+        
+        .video-section h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .main-video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .main-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .challenge-section {
+            background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD9 100%);
+            padding: 3rem;
+            border-radius: 20px;
+        }
+        
+        .challenge-section h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #AD1457;
+        }
+        
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .challenge-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .challenge-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .challenge-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #AD1457;
+        }
+        
+        .challenge-card p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .stem-intro-section {
+            padding: 4rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .step-card {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                min-width: auto;
+                padding: 1rem;
+            }
+            
+            .concepts-section,
+            .challenge-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</body>
+</html>
