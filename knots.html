@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn to Tie Knots - 25th Limerick Tuesday Night Beavers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <meta property="og:title" content="25th Limerick Tuesday Night Beavers">
+    <meta property="og:description" content="A simple, static website for the 25th Limerick St. Oliver Plunkett Beaver Scouts group, based in Shannon Banks, Corbally, Limerick.">
+    <meta property="og:image" content="https://andylegear.github.io/tuesdayNightBeavers/images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png">
+    <meta property="og:url" content="https://andylegear.github.io/tuesdayNightBeavers/">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png" alt="25th Limerick Beavers" class="nav-logo-img beaver-logo">
+                <img src="https://cdn.prod.website-files.com/618cf519424e2d632cd8c920/618cf9468e7b44379cb5a327_logo-white.png" alt="Scouting Ireland" class="nav-logo-img">
+                <h1 class="nav-logo">25th Limerick Tuesday Night Beavers</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="forms.html" class="nav-link">Forms</a>
+                </li>
+                <li class="nav-item">
+                    <a href="schedules.html" class="nav-link">Schedules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="announcements.html" class="nav-link">Announcements</a>
+                </li>
+                <li class="nav-item">
+                    <a href="knots.html" class="nav-link active">Knots</a>
+                </li>
+                <li class="nav-item">
+                    <a href="receipts.html" class="nav-link">Receipts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="expense-claims.html" class="nav-link">Expense Claims</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Learn to Tie Knots</h1>
+            <p>Essential knot-tying skills for Beaver Scouts</p>
+            <div class="hero-illustration">
+                <!-- Simple SVG illustration of knots/rope -->
+                <svg viewBox="0 0 400 200" class="knots-svg">
+                    <!-- Rope coil -->
+                    <ellipse cx="100" cy="100" rx="60" ry="40" fill="none" stroke="#8B4513" stroke-width="8"/>
+                    <ellipse cx="100" cy="100" rx="45" ry="30" fill="none" stroke="#A0522D" stroke-width="6"/>
+                    <ellipse cx="100" cy="100" rx="30" ry="20" fill="none" stroke="#CD853F" stroke-width="4"/>
+                    
+                    <!-- Simple knot illustration -->
+                    <path d="M 220 60 Q 250 80 240 100 Q 230 120 260 130 Q 290 140 280 110 Q 270 80 300 70" 
+                          stroke="#8B4513" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <circle cx="260" cy="100" r="15" fill="#FFD93D" stroke="#FF6B6B" stroke-width="3"/>
+                    
+                    <!-- Rope end -->
+                    <path d="M 320 80 Q 350 100 340 130 L 360 150" 
+                          stroke="#A0522D" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Stars for decoration -->
+                    <polygon points="180,40 183,50 193,50 185,57 188,67 180,61 172,67 175,57 167,50 177,50" fill="#FFD93D"/>
+                    <polygon points="350,60 352,67 360,67 354,72 356,80 350,75 344,80 346,72 340,67 348,67" fill="#4ECDC4"/>
+                </svg>
+            </div>
+            
+            <!-- Scroll Down Arrow -->
+            <div class="scroll-down-arrow">
+                <a href="#knots-intro" class="scroll-arrow-link">
+                    <div class="scroll-text">Learn Three Essential Knots</div>
+                    <div class="arrow-container">
+                        <div class="arrow-down"></div>
+                        <div class="arrow-down"></div>
+                        <div class="arrow-down"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="knots-intro-section" id="knots-intro">
+            <div class="container">
+                <h2>🪢 Knot Tying for Beaver Scouts</h2>
+                <p style="font-size: 1.2rem; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                    For Beaver Scouts (ages 6–8), we focus on simple, functional knots that build coordination and are genuinely useful. 
+                    Here are three essential knots every Beaver should learn!
+                </p>
+                
+                <div class="knots-grid">
+                    <!-- Reef Knot -->
+                    <article class="knot-card" id="reef-knot">
+                        <div class="knot-header">
+                            <span class="knot-number">1</span>
+                            <h3>🎀 Reef Knot (Square Knot)</h3>
+                        </div>
+                        <div class="knot-content">
+                            <div class="knot-description">
+                                <p>The most common "starter" knot! The Reef Knot is used for <strong>joining two pieces of rope of equal thickness</strong>.</p>
+                                <p>It's the basis for tying bandages and parcels - you probably use it every day without knowing!</p>
+                            </div>
+                            <div class="knot-uses">
+                                <h4>🎯 Uses:</h4>
+                                <ul>
+                                    <li>Tying bandages</li>
+                                    <li>Wrapping parcels</li>
+                                    <li>Tying shoelaces (the flat part!)</li>
+                                    <li>Joining two ropes together</li>
+                                </ul>
+                            </div>
+                            <div class="knot-tip">
+                                <h4>💡 Remember:</h4>
+                                <p><strong>"Right over left, left over right, makes a knot both tidy and tight!"</strong></p>
+                            </div>
+                            <div class="knot-video">
+                                <h4>📺 Watch How To Tie It:</h4>
+                                <div class="video-container">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/Np1LXDAOn5M" 
+                                        title="How to tie a Reef Knot"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Clove Hitch -->
+                    <article class="knot-card" id="clove-hitch">
+                        <div class="knot-header">
+                            <span class="knot-number">2</span>
+                            <h3>🪵 Clove Hitch</h3>
+                        </div>
+                        <div class="knot-content">
+                            <div class="knot-description">
+                                <p>A versatile knot used to <strong>secure a rope to a post or spar</strong>.</p>
+                                <p>It's the starting point for many "pioneering" projects - when you move up to Cubs, you'll use this knot to build amazing things!</p>
+                            </div>
+                            <div class="knot-uses">
+                                <h4>🎯 Uses:</h4>
+                                <ul>
+                                    <li>Tying a rope to a pole</li>
+                                    <li>Starting pioneering projects</li>
+                                    <li>Securing a tent line to a peg</li>
+                                    <li>Quick temporary fastening</li>
+                                </ul>
+                            </div>
+                            <div class="knot-tip">
+                                <h4>💡 Remember:</h4>
+                                <p><strong>Two loops that cross over each other around the pole!</strong></p>
+                            </div>
+                            <div class="knot-video">
+                                <h4>📺 Watch How To Tie It:</h4>
+                                <div class="video-container">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/aeddOym4L4Y" 
+                                        title="Clove Hitch for Beavers"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Bowline -->
+                    <article class="knot-card" id="bowline">
+                        <div class="knot-header">
+                            <span class="knot-number">3</span>
+                            <h3>👑 Bowline (The King of Knots!)</h3>
+                        </div>
+                        <div class="knot-content">
+                            <div class="knot-description">
+                                <p>Known as the <strong>"King of Knots"</strong> - the Bowline creates a fixed loop at the end of a rope.</p>
+                                <p>It's a vital safety knot because it <strong>won't slip or jam under load</strong>. Rescuers use this knot!</p>
+                            </div>
+                            <div class="knot-uses">
+                                <h4>🎯 Uses:</h4>
+                                <ul>
+                                    <li>Creating a rescue loop</li>
+                                    <li>Tying a boat to a dock</li>
+                                    <li>Making a loop that won't tighten</li>
+                                    <li>Securing climbing ropes</li>
+                                </ul>
+                            </div>
+                            <div class="knot-tip">
+                                <h4>💡 Remember the Story:</h4>
+                                <p><strong>"The rabbit comes out of the hole, goes around the tree, and back down the hole!"</strong></p>
+                            </div>
+                            <div class="knot-video">
+                                <h4>📺 Watch How To Tie It:</h4>
+                                <div class="video-container">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/gqfYB1bsGMc" 
+                                        title="Quick Bowline Tutorial"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Practice Tips Section -->
+                <div class="practice-tips-section">
+                    <h2>🎯 Tips for Practising at Home</h2>
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <span class="tip-icon">🪢</span>
+                            <h4>Use the Right Rope</h4>
+                            <p>A soft, flexible rope about 2 feet (60cm) long is perfect for practice. Avoid string that's too thin!</p>
+                        </div>
+                        <div class="tip-card">
+                            <span class="tip-icon">🔁</span>
+                            <h4>Practice Makes Perfect</h4>
+                            <p>Try tying each knot 10 times in a row. Soon your hands will remember without thinking!</p>
+                        </div>
+                        <div class="tip-card">
+                            <span class="tip-icon">👀</span>
+                            <h4>Watch Then Try</h4>
+                            <p>Watch the video, pause it, then try yourself. Rewind if you need to see a step again!</p>
+                        </div>
+                        <div class="tip-card">
+                            <span class="tip-icon">👨‍👩‍👧</span>
+                            <h4>Teach Someone Else</h4>
+                            <p>The best way to learn is to teach! Show Mum, Dad, or a sibling how to tie your knots.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 25th Limerick St. Oliver Plunkett Beaver Scouts</p>
+                    <p>Part of Scouting Ireland</p>
+                </div>
+                <div class="footer-logo">
+                    <img src="images/Gemini_Generated_Image_gvn6cqgvn6cqgvn6.png" alt="25th Limerick Beavers" class="footer-logo-img beaver-logo">
+                    <img src="https://cdn.prod.website-files.com/618cf519424e2d632cd8c920/618cf9468e7b44379cb5a327_logo-white.png" alt="Scouting Ireland" class="footer-logo-img">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        /* Knots Page Specific Styles */
+        .knots-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .knot-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .knot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .knot-header {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .knot-card:nth-child(2) .knot-header {
+            background: linear-gradient(135deg, #FFD93D 0%, #F39C12 100%);
+        }
+        
+        .knot-card:nth-child(3) .knot-header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A5A 100%);
+        }
+        
+        .knot-number {
+            background: white;
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .knot-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .knot-content {
+            padding: 2rem;
+        }
+        
+        .knot-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .knot-uses {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .knot-uses h4 {
+            margin: 0 0 1rem 0;
+            color: #333;
+        }
+        
+        .knot-uses ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .knot-uses li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .knot-tip {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #FFD93D;
+            margin-bottom: 1.5rem;
+        }
+        
+        .knot-tip h4 {
+            margin: 0 0 0.5rem 0;
+            color: #856404;
+        }
+        
+        .knot-tip p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #856404;
+        }
+        
+        .knot-video h4 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .practice-tips-section {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-radius: 20px;
+        }
+        
+        .practice-tips-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2E7D32;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tip-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tip-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .tip-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        
+        .tip-card p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .knots-intro-section {
+            padding: 4rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .knot-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .knot-content {
+                padding: 1.5rem;
+            }
+            
+            .practice-tips-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</body>
+</html>
