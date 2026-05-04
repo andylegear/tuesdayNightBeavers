@@ -1087,3 +1087,454 @@ a:hover {
     font-weight: bold;
     color: #4ECDC4;
 }
+
+/* ============================
+   Overnight Camp Page Styles
+   ============================ */
+
+/* Camp Hero SVG */
+.camp-svg {
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Camp Overview Section */
+.camp-overview-section {
+    padding: 3rem 0;
+    background: linear-gradient(45deg, #fff5e6, #fff2cc);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.camp-overview-section h2 {
+    text-align: center;
+    color: #6a4c93;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.camp-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.camp-detail-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #FFD93D, #ff8a95) 1;
+    border-image-slice: 1;
+    border-radius: 15px;
+}
+
+.camp-detail-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.camp-detail-card h3 {
+    color: #6a4c93;
+    margin: 0.8rem 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.camp-detail-card a {
+    color: #ff8a95;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.camp-detail-card a:hover {
+    color: #6a4c93;
+}
+
+.camp-card-icon {
+    margin-bottom: 0.5rem;
+}
+
+/* Camp Schedule / Timeline Section */
+.camp-schedule-section {
+    padding: 3rem 0;
+    background: linear-gradient(45deg, #e8f5e8, #f0f8e6);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.camp-schedule-section h2 {
+    text-align: center;
+    color: #6a4c93;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.camp-timeline {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.camp-timeline-block {
+    margin-bottom: 2rem;
+}
+
+.camp-timeline-block h3 {
+    color: #6a4c93;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #a8e6cf;
+}
+
+.camp-timeline-block.night h3 {
+    border-bottom-color: #dda0dd;
+}
+
+.camp-timeline-block.morning h3 {
+    border-bottom-color: #FFD93D;
+}
+
+.camp-timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.camp-timeline-time {
+    min-width: 110px;
+    font-weight: bold;
+    color: #6a4c93;
+    font-size: 0.95rem;
+    padding-top: 2px;
+    text-align: right;
+}
+
+.camp-timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #a8e6cf;
+    border: 3px solid #81c784;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.night .camp-timeline-dot {
+    background: #dda0dd;
+    border-color: #ba68c8;
+}
+
+.morning .camp-timeline-dot {
+    background: #FFE082;
+    border-color: #FFD93D;
+}
+
+.camp-timeline-content {
+    flex: 1;
+    background: white;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.camp-timeline-content strong {
+    color: #5a5a5a;
+    font-size: 1.05rem;
+}
+
+.camp-timeline-content p {
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+    color: #777;
+}
+
+/* Camp Packing Checklist Section */
+.camp-packing-section {
+    padding: 3rem 0;
+    background: linear-gradient(45deg, #f3e5f5, #ffeef0);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.camp-packing-section h2 {
+    text-align: center;
+    color: #6a4c93;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.camp-packing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.camp-packing-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.camp-packing-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.camp-packing-card span {
+    font-weight: 600;
+    color: #5a5a5a;
+    font-size: 0.95rem;
+}
+
+.camp-packing-icon {
+    flex-shrink: 0;
+}
+
+/* What NOT to Bring Section */
+.camp-notbring-section {
+    padding: 3rem 0;
+    background: linear-gradient(45deg, #ffeef0, #fff5e6);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.camp-notbring-section h2 {
+    text-align: center;
+    color: #6a4c93;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.camp-notbring-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.camp-notbring-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    border-left: 4px solid #ff8a95;
+}
+
+.camp-notbring-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.camp-notbring-card strong {
+    color: #6a4c93;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.camp-notbring-card p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Food & Dietary Needs Section */
+.camp-food-section {
+    padding: 3rem 0;
+    background: linear-gradient(45deg, #e6f3ff, #e8f5e8);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.camp-food-section h2 {
+    text-align: center;
+    color: #6a4c93;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.camp-food-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    line-height: 1.8;
+}
+
+.camp-food-card a {
+    color: #ff8a95;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.camp-food-card a:hover {
+    color: #6a4c93;
+}
+
+.camp-food-card p {
+    margin-bottom: 1rem;
+}
+
+.camp-food-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Label Everything Section */
+.camp-label-section {
+    padding: 2rem 0;
+    margin-bottom: 1rem;
+}
+
+.camp-label-card {
+    background: linear-gradient(135deg, #fff2cc, #FFE082);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 2px dashed #FFD93D;
+}
+
+.camp-label-card h2 {
+    color: #6a4c93;
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}
+
+.camp-label-card p {
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.camp-label-icon {
+    margin-bottom: 0.5rem;
+}
+
+/* FAQs for Parents Section */
+.camp-faq-section {
+    padding: 3rem 0;
+    background: linear-gradient(45deg, #f3e5f5, #e6f3ff);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.camp-faq-section h2 {
+    text-align: center;
+    color: #6a4c93;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.camp-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.camp-faq-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.camp-faq-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.camp-faq-card h3 {
+    color: #ff8a95;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.camp-faq-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.camp-faq-card a {
+    color: #ff8a95;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.camp-faq-card a:hover {
+    color: #6a4c93;
+}
+
+/* Camp page responsive adjustments */
+@media (max-width: 768px) {
+    .camp-overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .camp-timeline-time {
+        min-width: 80px;
+        font-size: 0.85rem;
+    }
+
+    .camp-packing-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .camp-notbring-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .camp-faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .camp-schedule-section h2,
+    .camp-overview-section h2,
+    .camp-packing-section h2,
+    .camp-notbring-section h2,
+    .camp-food-section h2,
+    .camp-faq-section h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .camp-timeline-item {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .camp-timeline-time {
+        text-align: left;
+    }
+
+    .camp-timeline-dot {
+        display: none;
+    }
+
+    .camp-packing-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .camp-packing-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+}
